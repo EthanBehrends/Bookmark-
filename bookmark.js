@@ -1,52 +1,27 @@
-let book = [
-    {
-        name: 'Socialism Wiki',
-        url: 'https://en.wikipedia.org/wiki/Socialism',
-        scroll: 100
-    },
-    {
-        name: 'Creating Extension',
-        url: 'https://www.sitepoint.com/create-chrome-extension-10-minutes-flat/',
-        scroll: 300
-    },
-    {
-        name: 'VSCode Download',
-        url: 'https://visualstudio.microsoft.com/downloads/',
-        scroll: 300
-    },
-    {
-        name: 'Get Favicon',
-        url: 'https://stackoverflow.com/questions/10282939/how-to-get-favicons-url-from-a-generic-webpage-in-javascript',
-        scroll: 300
-    },
-    {
-        name: 'Publish Extension to Chrome Web Store',
-        url: 'https://developer.chrome.com/docs/webstore/publish/',
-        scroll: 300
-    },
-    {
-        name: 'The Best Flexbox Tutorial',
-        url: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
-        scroll: 300
-    },
-    {
-        name: 'Royalty Free Images',
-        url: 'https://unsplash.com/',
-        scroll: 500
-    }
-]
+let localBook = []
 
 function visit(num) {
-    alert("Visiting " + book[num].name);
+    alert("Visiting " + localBook[num].name);
+}
+
+function setBookmarks() {
+    chrome.storage.sync.set({book: localBook}, function() {
+        alert("Saved");
+    });
 }
 
 function collectBookmarks() {
-
+    return new Promise(resolve => {
+        chrome.storage.sync.get(['book'], function(result) {
+            localBook = result.book;
+            resolve(result.book);
+        });
+    });
 }
 
 function renderBookmarks() {
     let html = "";
-    book.forEach((bkmrk, i) => {
+    localBook.forEach((bkmrk, i) => {
         html += parseBookmark(bkmrk, i);
     });
     document.getElementById("mainBody").innerHTML = html;
@@ -62,5 +37,6 @@ function parseBookmark(bkmrk,num) {
 }
 
 window.addEventListener("DOMContentLoaded", function () {
-    renderBookmarks();
+    collectBookmarks().then(() => {renderBookmarks()});
+    
 });
