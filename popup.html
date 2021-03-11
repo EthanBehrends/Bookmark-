@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Bookmark+</title>
+    <script src="bookmark.js"></script>
+    <style>
+        body {
+            width: 250px;
+            border-radius: .2em;
+            background-color: #D3EDF0;
+            margin: 0;
+        }
+
+        #header {
+            width: 100%;
+            background-color: #63C9D8;
+            color: #0D1A1C;
+            padding: .5em .75em;
+            box-sizing: border-box;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #mainBody {
+            height: 300px;
+            overflow-y: scroll;
+        }
+
+        .bookmark {
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: #B0D2D7 solid 1px;
+            padding: .5em 1em;
+            transition: .2s;
+            cursor:pointer;
+        }
+
+        .bookmark:hover {
+            background-color: #B0D2D7;
+        }
+
+        .icon {
+            width: 19px;
+            height: 19px;
+            display: inline-block;
+            margin: .2em;
+        }
+
+        .text {
+            max-width: 180px;
+            display: inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .name {
+            font-weight: bold;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .link {
+            max-width: 100%;
+            font-size: .5em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+  </head>
+  <body>
+      <div id="header">
+        <div id="title">Bookmark+</div>
+      </div>
+      <div id="mainBody">
+        
+      </div>
+  </body>
+</html>
