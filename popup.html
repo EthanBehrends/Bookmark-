@@ -26,6 +26,32 @@
             overflow-y: scroll;
         }
 
+        #toolbar {
+            width: 100%;
+            height: 30px;
+            background-color: #2F3536;
+
+        }
+
+        #delete, #add {
+            width: 30px;
+            height: 20px;
+            margin: 3px;
+            box-sizing: border-box;
+            display: inline-block;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        #delete {
+            background-image: url('SVG/delete.svg');
+        }
+
+        #add {
+            background-image: url('SVG/add.svg');
+        }
+
         .bookmark {
             width: 100%;
             box-sizing: border-box;
@@ -66,6 +92,15 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        #popup {
+            width: 200px;
+            height: 250px;
+            background-color:#63C9D8;
+            position: fixed;
+            top: 65px;
+            left: 25px;
+            border-radius: .5em;
+        }
     </style>
   </head>
   <body>
@@ -74,6 +109,17 @@
       </div>
       <div id="mainBody">
         
+      </div>
+      <div id="toolbar">
+        <div id="delete">
+
+        </div>
+        <div id="add">
+
+        </div>
+      </div>
+      <div id="popup">
+          <h3>Add New Bookmark</h3>
       </div>
   </body>
 </html>
